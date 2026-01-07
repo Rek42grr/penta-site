@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>농님 펜타 안 뺏을게요</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        .tile-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 320px);
+            grid-template-rows: repeat(auto-fill, 320px);
+            gap: 0;
+        }
+
+        .tile-container img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="tile-container" id="container"></div>
+
+    <script>
+        function fillScreen() {
+            const container = document.getElementById('container');
+            container.innerHTML = '';
+            
+            const cols = Math.ceil(window.innerWidth / 320) + 1;
+            const rows = Math.ceil(window.innerHeight / 320) + 1;
+            const totalTiles = cols * rows;
+
+            for (let i = 0; i < totalTiles; i++) {
+                const img = document.createElement('img');
+                img.src = 'penta.gif';
+                img.alt = '연속킬 차단!';
+                container.appendChild(img);
+            }
+        }
+
+        fillScreen();
+        window.addEventListener('resize', fillScreen);
+    </script>
+</body>
+</html>
